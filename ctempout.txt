@@ -1,0 +1,1 @@
+x/subscriptions/b415de9f-3b82-4533-8637-f8899cc26583/resourceGroups/rg-enterprise-networking-hubs/providers/Microsoft.Network/virtualNetworks/vnet-eastus2-hubq
