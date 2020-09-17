@@ -1,0 +1,18 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: aksic-to-keyvault-identity
+  namespace: a0008
+spec:
+  type: 0
+  resourceID: "/subscriptions/b415de9f-3b82-4533-8637-f8899cc26583/resourceGroups/rg-enterprise-networking-spokes/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aksic-to-keyvault"
+  clientID: "d601998a-4cd6-4b8d-8bd9-9726c30cfc68"
+---
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: aksic-to-keyvault-identity-binding
+  namespace: a0008
+spec:
+  azureIdentity: aksic-to-keyvault-identity
+  selector: traefik-ingress-controller

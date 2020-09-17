@@ -1,0 +1,16 @@
+$appgw = ""
+$appgw = Get-azapplicationgateway -name apw-aks-cvrlft6jk6nj2
+Start-AzApplicationGateway -ApplicationGateway $AppGw
+Stop-AzApplicationGateway -ApplicationGateway $AppGw
+
+
+$azfw = Get-AzFirewall -Name fw-eastus2-hub -ResourceGroupName rg-enterprise-networking-hubs
+$vPublicIP = Get-AzPublicIpAddress -Name pip-fw-eastus2-default -ResourceGroupName rg-enterprise-networking-hubs
+$vnet = Get-AzVirtualNetwork -ResourceGroupName rg-enterprise-networking-hubs -Name vnet-eastus2-hub
+$azfw.Allocate($vnet,$vpublicip)
+Set-AzFirewall -AzureFirewall $azfw
+
+
+$azfw = Get-AzFirewall -Name fw-eastus2-hub -ResourceGroupName rg-enterprise-networking-hubs
+$azfw.Deallocate()
+Set-AzFirewall -AzureFirewall $azfw
